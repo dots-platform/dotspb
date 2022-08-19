@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.dtrust.dec_exec";
+option java_outer_classname = "DecExecProto";
+option objc_class_prefix = "DTE";
+
+package dec_exec;
+
+service DecExec {
+    rpc Exec(App) returns (Result) {}
+    rpc UploadBlob(Blob) returns (Result) {}
+    rpc RetrieveBlob(Blob) returns (Blob) {}
+}
+
+message App {
+    string app_name = 1;
+    int64 app_uid = 2;
+    string func_name = 3;
+    repeated string in_files = 4;
+    repeated string out_files = 5;
+    string client_id = 6;
+}
+
+message Blob {
+    string key = 1;
+    bytes val = 2;
+    string client_id = 3;
+}
+
+message Result {
+    string result = 1;
+}
