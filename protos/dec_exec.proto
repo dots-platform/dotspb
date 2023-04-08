@@ -13,6 +13,13 @@ service DecExec {
     rpc RetrieveBlob(Blob) returns (Blob) {}
 }
 
+// A UUID encoded according to the recommendations in
+// https://github.com/protocolbuffers/protobuf/issues/2224#issuecomment-760635430.
+message UUID {
+    fixed64 hi = 1;
+    fixed64 lo = 2;
+}
+
 message App {
     string app_name = 1;
     int64 app_uid = 2;
@@ -20,6 +27,7 @@ message App {
     repeated string in_files = 4;
     repeated string out_files = 5;
     string client_id = 6;
+    UUID request_id = 7;
 }
 
 message Blob {
