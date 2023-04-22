@@ -28,6 +28,7 @@ message App {
     repeated string out_files = 5;
     string client_id = 6;
     UUID request_id = 7;
+    repeated bytes args = 8;
 }
 
 message Blob {
