@@ -1,5 +1,7 @@
 PROTOS_DIR = protos
-GO_DIR = go/dotspb
+PROTOS = $(wildcard $(PROTOS_DIR)/*.proto)
+GO_DIR = go
+GO_PKG = ./dotspb
 
 .PHONY: all
 all: protogen
@@ -8,8 +10,8 @@ all: protogen
 protogen:
 	protoc \
 		--proto_path=$(PROTOS_DIR) \
-		--go_out=. \
-		--go-grpc_out=. \
-		--go_opt=Mdec_exec.proto=$(GO_DIR) \
-		--go-grpc_opt=Mdec_exec.proto=$(GO_DIR) \
-		dec_exec.proto
+		--go_out=$(GO_DIR) \
+		--go-grpc_out=$(GO_DIR) \
+		$(patsubst $(PROTOS_DIR)/%,--go_opt=M%=$(GO_PKG),$(PROTOS)) \
+		$(patsubst $(PROTOS_DIR)/%,--go-grpc_opt=M%=$(GO_PKG),$(PROTOS)) \
+		$(patsubst $(PROTOS_DIR)/%,%,$(PROTOS))
