@@ -3,6 +3,7 @@ PROTOS = $(wildcard $(PROTOS_DIR)/*.proto)
 GO_DIR = go
 GO_PKG = ./dotspb
 RUST_DIR = rust
+RUST_PROTOGEN_DIR = rust-protogen
 
 .PHONY: all
 all: protogen-go protogen-rust
@@ -19,4 +20,5 @@ protogen-go:
 
 .PHONY: protogen-rust
 protogen-rust:
+	cd $(RUST_PROTOGEN_DIR) && cargo run
 	cd $(RUST_DIR) && cargo build
