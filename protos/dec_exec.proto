@@ -39,4 +39,5 @@ message Blob {
 
 message Result {
     string result = 1;
+    bytes output = 2;
 }

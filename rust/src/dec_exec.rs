@@ -43,6 +43,8 @@ pub struct Blob {
 pub struct Result {
     #[prost(string, tag = "1")]
     pub result: ::prost::alloc::string::String,
+    #[prost(bytes = "vec", tag = "2")]
+    pub output: ::prost::alloc::vec::Vec<u8>,
 }
 /// Generated client implementations.
 pub mod dec_exec_client {
