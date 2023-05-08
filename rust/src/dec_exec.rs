@@ -45,6 +45,8 @@ pub struct Result {
     pub result: ::prost::alloc::string::String,
     #[prost(bytes = "vec", tag = "2")]
     pub output: ::prost::alloc::vec::Vec<u8>,
+    #[prost(int32, tag = "3")]
+    pub code: i32,
 }
 /// Generated client implementations.
 pub mod dec_exec_client {
