@@ -14,10 +14,7 @@
 
 syntax = "proto3";
 
-option java_multiple_files = true;
-option java_package = "io.grpc.dtrust.dec_exec";
-option java_outer_classname = "DecExecProto";
-option objc_class_prefix = "DTE";
+option go_package = "github.com/dots-platform/dotspb/go/dotspb";
 
 package dec_exec;
 
